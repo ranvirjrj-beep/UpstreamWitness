@@ -1,0 +1,31 @@
+{
+  "name": "Memanto public $100 bounty — PR #1960",
+  "repo": "moorcheh-ai/memanto",
+  "submitted_at": "2026-09-10T15:49:43Z",
+  "pr_number": 1960,
+  "paths": [
+    "memanto/app/services/session_service.py",
+    "tests/test_session_cross_process_lifecycle.py"
+  ],
+  "symbols": [
+    "SessionService",
+    "check_and_auto_renew",
+    "end_session",
+    "FileLock"
+  ],
+  "keywords": [
+    "cross-process",
+    "session",
+    "renewal",
+    "logout",
+    "lifecycle",
+    "bearer token"
+  ],
+  "anchors": [
+    "serialize session lifecycle across workers"
+  ],
+  "max_commits": 40,
+  "path_commit_limit": 15,
+  "max_path_queries": 8,
+  "max_candidate_details": 20
+}
