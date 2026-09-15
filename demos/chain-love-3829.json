@@ -1,0 +1,32 @@
+{
+  "name": "Chain.Love public pending PR #3829",
+  "repo": "Chain-Love/chain-love",
+  "submitted_at": "2026-09-14T17:45:08Z",
+  "pr_number": 3829,
+  "paths": [
+    "listings/specific-networks/filecoin/platforms.csv",
+    "listings/specific-networks/somnia/platforms.csv",
+    "references/offers/platforms.csv"
+  ],
+  "symbols": [
+    "goldsky-compose-scale",
+    "goldsky-compose-enterprise",
+    "Pay-As-You-Go"
+  ],
+  "keywords": [
+    "Goldsky",
+    "Compose",
+    "Filecoin",
+    "Somnia",
+    "automation",
+    "Scale",
+    "Enterprise"
+  ],
+  "anchors": [
+    "goldsky compose filecoin somnia"
+  ],
+  "max_commits": 40,
+  "path_commit_limit": 15,
+  "max_path_queries": 8,
+  "max_candidate_details": 20
+}

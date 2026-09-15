@@ -1,0 +1,34 @@
+{
+  "name": "Stellar portfolio rebalancer — merged PR #1648",
+  "repo": "ritik4ever/stellar-portfolio-rebalancer",
+  "submitted_at": "2026-08-29T10:59:45Z",
+  "pr_number": 1648,
+  "paths": [
+    "backend/src/jobs/autoRebalance.ts",
+    "backend/src/test/autoRebalanceDryRun.test.ts",
+    "backend/src/api/validation.ts",
+    "backend/src/types/index.ts",
+    "CHANGELOG.md",
+    "API.md"
+  ],
+  "symbols": [
+    "resolveAutoRebalanceDryRun",
+    "processAutoRebalanceJob",
+    "AUTO_REBALANCE_DRY_RUN",
+    "portfoliosSimulated"
+  ],
+  "keywords": [
+    "scheduled",
+    "auto-rebalance",
+    "dry-run",
+    "simulation",
+    "on-chain"
+  ],
+  "anchors": [
+    "scheduled auto-rebalance dry-run mode"
+  ],
+  "max_commits": 40,
+  "path_commit_limit": 15,
+  "max_path_queries": 8,
+  "max_candidate_details": 20
+}

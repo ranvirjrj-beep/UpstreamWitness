@@ -1,0 +1,22 @@
+{
+  "name": "Sanitized example",
+  "repo": "owner/public-repository",
+  "submitted_at": "2026-01-01T12:00:00Z",
+  "paths": [
+    "src/component.py"
+  ],
+  "symbols": [
+    "ExampleSymbol"
+  ],
+  "keywords": [
+    "sanitized-concept",
+    "second-concept"
+  ],
+  "anchors": [
+    "specific sanitized phrase"
+  ],
+  "max_commits": 40,
+  "path_commit_limit": 15,
+  "max_path_queries": 8,
+  "max_candidate_details": 20
+}
