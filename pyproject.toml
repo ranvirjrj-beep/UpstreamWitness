@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "upstreamwitness"
+version = "0.1.0rc1"
+description = "Public-code evidence tracker for submitted fixes, bounty work, and security reports"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+  { name = "Ranvir Jat" }
+]
+keywords = ["github", "security", "bug-bounty", "open-source", "evidence", "forensics", "upstream"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+  "Topic :: Software Development :: Version Control :: Git"
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.urls]
+Repository = "https://github.com/ranvirjrj-beep/UpstreamWitness"
+Issues = "https://github.com/ranvirjrj-beep/UpstreamWitness/issues"
+
+[project.scripts]
+upstreamwitness = "upstreamwitness.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["upstreamwitness*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
