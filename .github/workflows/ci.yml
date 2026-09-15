@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Compile
+        run: python -m compileall -q upstreamwitness tests
+      - name: Test
+        run: pytest
+      - name: CLI smoke
+        run: |
+          upstreamwitness --version
+          python -m upstreamwitness --version
+      - name: Live public PR initializer smoke
+        run: |
+          upstreamwitness init-pr https://github.com/ritik4ever/stellar-portfolio-rebalancer/pull/1648 --out /tmp/upstreamwitness-case.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('/tmp/upstreamwitness-case.json').read_text())
+          assert data['repo'] == 'ritik4ever/stellar-portfolio-rebalancer'
+          assert data['pr_number'] == 1648
+          assert data['paths']
+          print('live initializer smoke: PASS')
+          PY
