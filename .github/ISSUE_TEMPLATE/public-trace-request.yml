@@ -1,0 +1,48 @@
+name: Public trace request
+description: Request an UpstreamWitness trace for a public pull request or other public upstream change.
+title: "[Public trace] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this only for public information. Do not paste private vulnerability reports, confidential program details, credentials, unpublished evidence, or personal data.
+
+  - type: input
+    id: public_url
+    attributes:
+      label: Public PR or repository URL
+      description: Link to the public pull request, issue, commit, or repository you want traced.
+      placeholder: https://github.com/owner/repo/pull/123
+    validations:
+      required: true
+
+  - type: input
+    id: baseline
+    attributes:
+      label: Submission or baseline date
+      description: Approximate UTC date when the fix/report/contribution was submitted or became relevant.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: textarea
+    id: public_context
+    attributes:
+      label: Public-only context
+      description: Optional public facts that may help narrow the trace. Do not include confidential report text.
+      placeholder: Public files, symbols, keywords, review state, or release names.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety and interpretation
+      options:
+        - label: I confirm everything I supplied here is already public.
+          required: true
+        - label: I did not include private vulnerability details, secrets, credentials, personal data, or confidential bounty information.
+          required: true
+        - label: I understand UpstreamWitness reports public correlation evidence and does not prove attribution, bounty acceptance, legal entitlement, or payment entitlement.
+          required: true
