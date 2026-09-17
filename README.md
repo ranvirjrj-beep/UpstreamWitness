@@ -1,29 +1,74 @@
 # UpstreamWitness
 
-UpstreamWitness is a public-code evidence tracker for security researchers, bounty workers, and open-source contributors.
+**Know what changed upstream after you submitted a fix, bounty, security report, or open-source contribution.**
+
+UpstreamWitness is an open-source CLI that turns public GitHub activity into a reproducible evidence report.
 
 It answers one narrow question:
 
 > After I submitted work, did the upstream repository later change in a materially related way?
 
-UpstreamWitness scans public GitHub activity after a user-defined baseline and ranks candidate commits using independent evidence channels: specific file paths, patch symbols, and textual anchors/keywords. It also records public PR merge/review state, releases, scan coverage, and a deterministic evidence fingerprint.
+This is useful when you are waiting on a maintainer, bounty program, security team, or project owner and want to separate **public evidence** from guesswork.
 
 **UpstreamWitness reports correlation evidence. It does not prove attribution, bounty acceptance, legal entitlement, or payment entitlement.**
 
-## Install from source
+## Try it in 60 seconds
 
 Python 3.11+ is required. The runtime has no third-party dependencies.
 
+Install directly from GitHub:
+
 ```bash
-python -m pip install -e .
+python -m pip install "git+https://github.com/ranvirjrj-beep/UpstreamWitness.git"
 upstreamwitness --version
 ```
 
-For development/tests:
+Then trace any public GitHub PR:
 
 ```bash
-python -m pip install -e ".[dev]"
+upstreamwitness trace-pr https://github.com/owner/repo/pull/123 --out-dir my-trace
 ```
+
+You get:
+
+```text
+my-trace/
+  case.json      sanitized tracking configuration
+  report.md      human-readable evidence report
+  report.json    machine-readable evidence record
+```
+
+The report tells you whether the public record shows:
+
+- the tracked PR merged upstream;
+- strong or possible multi-channel overlap with later commits;
+- releases after your baseline;
+- relevant public review/merge chronology;
+- no meaningful public signal in the scanned window;
+- exactly which files, symbols, and textual anchors contributed to the result.
+
+## Who this is for
+
+Use UpstreamWitness if you are a:
+
+- security researcher tracking public remediation after a private report;
+- bounty worker waiting to see whether related code lands upstream;
+- OSS contributor following what happened after a PR or proposed fix;
+- maintainer who wants a reproducible public evidence pack instead of screenshots and memory.
+
+## Want to test it on a real case?
+
+**We are actively looking for early users.**
+
+If you have a **public GitHub PR** or a sanitized public-repository case, open an issue using the **Public trace request** template. Do not include private vulnerability details, secrets, tokens, customer data, private PoCs, or confidential report text.
+
+A useful early-user report is simple:
+
+1. the public PR/repository URL;
+2. a short sanitized concept if the PR title is too broad;
+3. what result was useful, confusing, or missing.
+
+Real cases will drive the next release.
 
 ## Quickest start: trace a public PR
 
@@ -35,15 +80,6 @@ You can also run the package directly:
 
 ```bash
 python -m upstreamwitness trace-pr https://github.com/owner/repo/pull/123 --out-dir my-trace
-```
-
-Output:
-
-```text
-my-trace/
-  case.json      sanitized tracking configuration
-  report.md      human-readable evidence report
-  report.json    machine-readable evidence record
 ```
 
 The public-PR initializer deliberately copies only public PR metadata, title-derived terms, and changed filenames. It does **not** copy PR body text into the case file.
@@ -134,7 +170,7 @@ CI runs the same test suite on Python 3.11, 3.12, and 3.13.
 
 ## Project status
 
-`0.1.0-rc.1` — release candidate.
+`0.1.0-rc.1` — release candidate. Early-user feedback is welcome.
 
 ## License
 
